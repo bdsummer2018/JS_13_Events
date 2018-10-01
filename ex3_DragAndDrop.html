@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .dnd{
+            width: 100px;
+            height: 100px;
+            background-color: #369;
+            border: 2px solid darkgray;
+        }
+    </style>
+
+    <script>
+
+        let dndModule = {
+            init:function () {
+                this.block = document.querySelector(".dnd");
+                this.dragmove=false;
+                this.attachEvent();
+            },
+            attachEvent:function () {
+                let _this = this;
+                this.block.addEventListener("mousedown",function (e) {
+                    _this.dragStart(e.clientX,e.clientY);
+                });
+                this.block.addEventListener("mouseup",function () {
+                    this.dragEnd();
+                }.bind(this));
+                document.addEventListener("mousemove",e=>{
+                    if(this.dragmove) this.dragMove(e.clientX,e.clientY);
+                })
+
+            },
+
+            dragStart:function(x,y){
+                this.dragmove = true;
+                this.setBlockPosition(x,y);
+            },
+            dragEnd(){
+                this.dragmove = false;
+            },
+            dragMove(x,y){
+                this.setBlockPosition(x,y);
+            },
+
+            setBlockPosition(x,y){
+                this.block.style.position="absolute";
+                this.block.style.left = (x-50)+"px";
+                this.block.style.top = (y-50)+"px";
+            }
+
+
+
+        };
+
+
+
+
+
+        let modules =[dndModule];
+        document.addEventListener("DOMContentLoaded",function () {
+            modules.forEach(m=>m.init());
+        })
+
+
+
+
+    </script>
+
+</head>
+<body>
+    <div class="dnd"></div>
+</body>
+</html>

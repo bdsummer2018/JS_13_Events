@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        // window.addEventListener("load",function(){
+        //
+        //     let btn = document.querySelector("button");
+        //     let f;
+        //     btn.addEventListener("click",f=function () {
+        //         alert("hello");
+        //         btn.removeEventListener("click",f);
+        //     })
+        //
+        // })
+
+
+        document.addEventListener("click",function (e) {
+            if(e.target.matches("button")){
+                alert(e.target.getAttribute("data-message"));
+            }
+        })
+
+
+
+    </script>
+
+
+</head>
+<body>
+    <button data-message="Hello">click me</button>
+    <button data-message="Hello User">click me2</button>
+    <button data-message="Hello World">click me3</button>
+    <button data-message="Good By">click me4</button>
+</body>
+</html>

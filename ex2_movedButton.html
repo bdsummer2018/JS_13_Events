@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+        document.addEventListener("click",function (e) {
+            if(!e.target.matches("button"))return;
+            alert(e.target.dataset.response)
+        });
+
+        document.addEventListener("DOMContentLoaded",function () {
+            let btnNo = document.querySelector("button[data-response=no]");
+
+            btnNo.addEventListener("mouseenter",function () {
+                btnNo.style.position="absolute";
+
+                let w = window.innerWidth-50;
+                let h = window.innerHeight-50;
+
+                let x = Math.round(Math.random()*w);
+                let y = Math.round(Math.random()*h);
+
+                btnNo.style.left = x+"px";
+                btnNo.style.top = y+"px";
+
+            })
+        })
+
+
+    </script>
+
+</head>
+<body>
+
+
+    Нравится ли вам наш сайт
+    <button data-response="yes">да</button>
+    <button data-response="no">нет</button>
+
+</body>
+</html>
